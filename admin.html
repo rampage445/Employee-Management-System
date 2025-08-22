@@ -14,7 +14,7 @@
         <div class="user-profile">
             <img src="img_avt.png" alt="Profile Picture">
             <div class="user-info" style="padding-right: 220px;">
-                <?php include 'extra.php'; ?>
+                <?php include 'user_role.php'; ?>
             </div>
             <button id="logout" onclick="window.location.href='logout.php'">Log Out</button>
         </div>
@@ -90,7 +90,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php include 'adm.php'; ?>
+                    <?php include 'admin.php'; ?>
                 </tbody>
             </table>
            <script>
@@ -109,7 +109,7 @@
                 }
                 
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST','update.php',true);
+                xhr.open('POST','update_user_info.php',true);
                 xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 
                 xhr.onreadystatechange = function(){
@@ -130,7 +130,7 @@
                 }
             
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST','delete.php',true);
+                xhr.open('POST','delete_user.php',true);
                 xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 
                 xhr.onreadystatechange = function(){

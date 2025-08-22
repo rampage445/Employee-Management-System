@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="regcs.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+       
+        <form method="POST" action="reg.php">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+
+            <div class="dropdown">
+                <input type="text" id="deptid" name="dept" placeholder="Department" value="Engineering" class="dropdown-input" readonly required >
+                <select class="dropdown-list" onchange="setDept(this)" style="background-color: rgb(243, 209, 108);">
+                  <option value="Engineering">Engineering</option>
+                  <option value="Foreman">Foreman</option>
+                  <option value="Labor">Labor</option>
+                </select>
+              </div>
+            <div class="dropdown">
+                <input type="text" id="typeid" name="type" placeholder="Type Of Work" value="Full_Time" style="margin-top: 20px;" class="dropdown-input" readonly required >
+                <select class="dropdown-list" onchange="settow(this)" style="background-color: bisque;">
+                  <option value="FULL_TIME">FULL TIME</option>
+                  <option value="PART_TIME">PART TIME</option>
+                </select>
+            </div>
+            <input type="number" name="hr" placeholder="Hourly rate" style="margin-top: 20px;" required><br>
+            <input type="submit" name="register" style="margin-top: 20px;" value="Register">
+        </form>
+
+        <div class="register-form">
+            <h2>Already have an account?</h2>
+            <p>Login <a href="./login.html">here</a></p>
+        </div>
+    </div>
+    <script>
+        function setDept(val){
+            document.getElementById("deptid").value = val.value;
+        }
+        function settow(val){
+            document.getElementById("typeid").value = val.value;
+        }
+    </script>
+</body>
+</html>

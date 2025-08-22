@@ -1,0 +1,7 @@
+<?php
+    session_start();
+    unset($_SESSION['actUser']);
+    session_destroy();
+    header("Location: login.html");
+    exit();
+?>

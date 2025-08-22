@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="viewscs.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Dashboard</h1>
+        <div class="user-profile">
+            <img src="img_avt.png" alt="Profile Picture">
+            <div class="user-info" style="padding-right: 220px;">
+                <?php include 'extra.php'; ?>
+            </div>
+            <button style="text-align: center;display:block;
+        margin: 0 auto;
+        width: 10%;
+        padding: 10px;
+        background-color: #f03d1e;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;" onclick="window.location.href='logout.php'">Log Out</button>
+        </div>
+        <div class="user-data" >
+            <h2 style="text-align: center;">User Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dept.Name</th>
+                        <th>Type Of Work</th>
+                        <th>Hourly Rate</th>
+                        <th>Address</th>
+                        <th>Project</th>
+                        <th>Salary</th>
+                        <th>Salary Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php include 'view.php'; ?>
+                </tbody>
+            </table>
+           
+        </div>
+    </div>
+</body>
+</html>

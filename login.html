@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="logcs.css" type="text/css">
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="log.php" method="post">
+        <div class="imgcontainer">
+            <img src="img_avt.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" id="mypass" placeholder="Enter Password" name="password" required>
+            <input type="checkbox" onclick="myFunction()">Show Password
+            <button name="login" type="submit">Login</button>
+            <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#ffffff">
+            <button type="button" onclick="alert('Thanks For Using');" class="cancelbtn">Cancel</button>
+            <span class="acc">Create An <a href="./reg.html">Account</a></span>
+        </div>
+    </form>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("mypass");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="viewscs.css" type="text/css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>User Dashboard</h1>
+        <div class="user-profile">
+            <img src="img_avt.png" alt="Profile Picture">
+            <div class="user-info" style="padding-right: 220px;">
+                <?php include 'extra.php'; ?>
+            </div>
+            <button id="logout" onclick="window.location.href='logout.php'">Log Out</button>
+        </div>
+        <div class="user-data" >
+            <h2 style="text-align: center;">User Data</h2>
+            <div class="outer">
+                <button class='inner' id="upbtn" onclick="getUpdated();">UPDATE</button>
+                <button class='inner' id="delbtn" onclick="getIds();">Delete</button>
+            </div>
+            <style>
+                #outer
+                {
+                    width:100%;
+                    text-align: center;
+                }
+                #logout{
+                    text-align: center;display:block;
+                    margin: 0 auto;
+                    width: 10%;
+                    padding: 10px;
+                    background-color: #f03d1e;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                .inner
+                {
+                    display: inline-block;
+                }
+                #upbtn{
+                    text-align: center;display:inline-block;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                    margin-left: 750px;
+                    width: 10%;
+                    padding: 10px;
+                    background-color: #7fb43e;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                #delbtn{
+                    text-align: center;
+                    display:inline-block;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                    margin-left: 0px;
+                    width: 10%;
+                    padding: 10px;
+                    background-color: #f03d1e;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                
+            </style>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Dept.</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Basic</th>
+                        <th>Allowance</th>
+                        <th>Deduction</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php include 'adm.php'; ?>
+                </tbody>
+            </table>
+           <script>
+            function getUpdated(){
+                var checkbox = document.getElementsByClassName("check");
+                //console.log($('#1>td#a')[0].innerText);
+                var selecteduser = [];
+                for(let i=0;i<checkbox.length;i++){
+                    if(checkbox[i].checked){
+                        //console.log();
+                        selecteduser.push({'chkval':checkbox[i].value,'bv':$(`#${checkbox[i].value}>td#b`)[0].innerText,
+                        'av':$(`#${checkbox[i].value}>td#a`)[0].innerText,
+                        'dv':$(`#${checkbox[i].value}>td#d`)[0].innerText,
+                        'sv':$(`#${checkbox[i].value}>td#s`)[0].innerText});
+                    }
+                }
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST','update.php',true);
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState===4 && xhr.status===200){
+                        console.log(xhr.responseText);
+                    }
+                };
+                var datas = 'userdata='+(JSON.stringify(selecteduser));
+                xhr.send(datas);
+            }
+            function getIds(){
+                var checkbox = document.getElementsByClassName("check");
+                var selecteduser = [];
+                for(let i=0;i<checkbox.length;i++){
+                    if(checkbox[i].checked){
+                        selecteduser.push(checkbox[i].value);
+                    }
+                }
+            
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST','delete.php',true);
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState===4 && xhr.status===200){
+                        console.log(xhr.responseText);
+                    }
+                };
+                var data = 'users='+encodeURIComponent(JSON.stringify(selecteduser));
+                xhr.send(data);
+            }
+           </script>
+        </div>
+        
+    </div>
+</body>
+</html>

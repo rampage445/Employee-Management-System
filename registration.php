@@ -1,6 +1,6 @@
 <?php
     if(isset($_POST['register'])){
-        include('conn.php');
+        include('connection.php');
         $username = $_POST['username'];
         $password = $_POST['password'];
         $email = $_POST['email'];

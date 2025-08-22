@@ -1,6 +1,6 @@
 <?php
     if(isset($_POST['login'])){
-        include('conn.php');
+        include('connection.php');
         $username = $_POST['username'];
         $password = $_POST['password'];
         

@@ -1,5 +1,5 @@
 <?php
-include('conn.php');
+include('connection.php');
 $username = $_SESSION['actUser'];
 $sql = "SELECT e.admin,e.email FROM employee e WHERE e.emp_name='$username'";
 $result = mysqli_query($conn,$sql);

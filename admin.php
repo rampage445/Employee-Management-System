@@ -1,5 +1,5 @@
 <?php
-    include('conn.php');
+    include('connection.php');
     $username = $_SESSION['actUser'];
     $sql = "SELECT e.emp_id,e.emp_name,d.dept_name,e.password,e.email,s.basic,s.allowance,s.deduction,s.net_salary as salary,e.admin 
         FROM employee e 

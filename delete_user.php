@@ -1,5 +1,5 @@
 <?php
-    include('conn.php');
+    include('connection.php');
     if($_SERVER['REQUEST_METHOD']==='POST'){
         if(isset($_POST['users'])){
             $sid = json_decode($_POST['users']);
